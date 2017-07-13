@@ -35,21 +35,25 @@ class AuthorizationVC: UIViewController {
         view.endEditing(true)
     }
     
-    // Поднимаем скролл вью над клавиатурой
-    func keyboardWillShow(_ notification:Notification) {
-        if let keyboardSize = (notification.userInfo?[UIKeyboardFrameBeginUserInfoKey] as? NSValue)?.cgRectValue {
+    func keyboardWillShow(sender: Notification) {
+        let userInfo = sender.userInfo
+        let keyboardSize: CGRect = (userInfo![UIKeyboardFrameBeginUserInfoKey] as! NSValue).cgRectValue
+        let keyboardSizeWithPredictive: CGRect = (userInfo![UIKeyboardFrameEndUserInfoKey]! as! NSValue).cgRectValue
+        if keyboardSize.height == keyboardSizeWithPredictive.height {
             if self.view.frame.origin.y == 0 {
-                self.view.frame.origin.y -= keyboardSize.height - bottomConstr.constant + 20
+                self.view.frame.origin.y -= keyboardSize.height - self.bottomConstr.constant + 20
             }
+        } else if keyboardSizeWithPredictive.height < keyboardSize.height {
+            self.view.frame.origin.y += keyboardSize.height - keyboardSizeWithPredictive.height
+        } else if keyboardSizeWithPredictive.height > keyboardSize.height {
+            self.view.frame.origin.y -= keyboardSizeWithPredictive.height - keyboardSize.height
         }
     }
     
-    // Возвращаем скролл вью на место
+    // Возвращаем все элементы интерфейса на место
     func keyboardWillHide(_ notification:Notification) {
-        if let keyboardSize = (notification.userInfo?[UIKeyboardFrameBeginUserInfoKey] as? NSValue)?.cgRectValue {
-            if self.view.frame.origin.y != 0 {
-                self.view.frame.origin.y += keyboardSize.height - bottomConstr.constant + 20
-            }
+        if self.view.frame.origin.y != 0 {
+            self.view.frame.origin.y = 0
         }
     }
     
