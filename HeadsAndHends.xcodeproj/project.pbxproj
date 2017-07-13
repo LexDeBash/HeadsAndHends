@@ -3,7 +3,7 @@
 	archiveVersion = 1;
 	classes = {
 	};
-	objectVersion = 46;
+	objectVersion = 48;
 	objects = {
 
 /* Begin PBXBuildFile section */
@@ -12,6 +12,8 @@
 		9878827E1F169D7D008E8C3F /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 9878827C1F169D7D008E8C3F /* Main.storyboard */; };
 		987882801F169D7D008E8C3F /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 9878827F1F169D7D008E8C3F /* Assets.xcassets */; };
 		987882831F169D7D008E8C3F /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 987882811F169D7D008E8C3F /* LaunchScreen.storyboard */; };
+		9888CB1E1F16A84800377C90 /* AuthorizationVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9888CB1D1F16A84800377C90 /* AuthorizationVC.swift */; };
+		9888CB201F17427900377C90 /* LoginPasswordTVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9888CB1F1F17427900377C90 /* LoginPasswordTVC.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -22,6 +24,8 @@
 		9878827F1F169D7D008E8C3F /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		987882821F169D7D008E8C3F /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		987882841F169D7D008E8C3F /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		9888CB1D1F16A84800377C90 /* AuthorizationVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AuthorizationVC.swift; sourceTree = "<group>"; };
+		9888CB1F1F17427900377C90 /* LoginPasswordTVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LoginPasswordTVC.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -56,6 +60,8 @@
 			children = (
 				987882781F169D7D008E8C3F /* AppDelegate.swift */,
 				9878827A1F169D7D008E8C3F /* ViewController.swift */,
+				9888CB1D1F16A84800377C90 /* AuthorizationVC.swift */,
+				9888CB1F1F17427900377C90 /* LoginPasswordTVC.swift */,
 				9878827C1F169D7D008E8C3F /* Main.storyboard */,
 				9878827F1F169D7D008E8C3F /* Assets.xcassets */,
 				987882811F169D7D008E8C3F /* LaunchScreen.storyboard */,
@@ -96,13 +102,12 @@
 				TargetAttributes = {
 					987882741F169D7D008E8C3F = {
 						CreatedOnToolsVersion = 8.3.3;
-						DevelopmentTeam = GBTTU32HS2;
 						ProvisioningStyle = Automatic;
 					};
 				};
 			};
 			buildConfigurationList = 987882701F169D7D008E8C3F /* Build configuration list for PBXProject "HeadsAndHends" */;
-			compatibilityVersion = "Xcode 3.2";
+			compatibilityVersion = "Xcode 8.0";
 			developmentRegion = English;
 			hasScannedForEncodings = 0;
 			knownRegions = (
@@ -139,6 +144,8 @@
 			files = (
 				9878827B1F169D7D008E8C3F /* ViewController.swift in Sources */,
 				987882791F169D7D008E8C3F /* AppDelegate.swift in Sources */,
+				9888CB201F17427900377C90 /* LoginPasswordTVC.swift in Sources */,
+				9888CB1E1F16A84800377C90 /* AuthorizationVC.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -263,6 +270,7 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				DEVELOPMENT_TEAM = GBTTU32HS2;
 				INFOPLIST_FILE = HeadsAndHends/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 10.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = LDB.HeadsAndHends;
 				PRODUCT_NAME = "$(TARGET_NAME)";
@@ -276,6 +284,7 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				DEVELOPMENT_TEAM = GBTTU32HS2;
 				INFOPLIST_FILE = HeadsAndHends/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 10.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = LDB.HeadsAndHends;
 				PRODUCT_NAME = "$(TARGET_NAME)";
@@ -302,6 +311,7 @@
 				987882891F169D7D008E8C3F /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};
