@@ -67,16 +67,20 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <containerView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="U9T-NJ-TGr">
-                                <rect key="frame" x="0.0" y="193" width="375" height="180"/>
+                                <rect key="frame" x="0.0" y="173.5" width="375" height="180"/>
                                 <constraints>
-                                    <constraint firstAttribute="height" constant="180" id="WEj-OK-ZO8"/>
+                                    <constraint firstAttribute="height" constant="180" id="b4R-D2-gId"/>
                                 </constraints>
                                 <connections>
                                     <segue destination="eNG-tW-eux" kind="embed" id="dDt-LS-C7G"/>
                                 </connections>
                             </containerView>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="YMK-y5-SZu">
+                                <rect key="frame" x="62" y="452.5" width="251" height="30"/>
+                                <state key="normal" title="У меня ещё нет аккаунта. Создать."/>
+                            </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Rv7-Ol-GD9">
-                                <rect key="frame" x="114" y="407" width="147" height="44"/>
+                                <rect key="frame" x="114" y="387.5" width="147" height="44"/>
                                 <color key="backgroundColor" red="1" green="0.60784313729999995" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="44" id="4xb-9N-YAe"/>
@@ -91,23 +95,22 @@
                                     </userDefinedRuntimeAttribute>
                                 </userDefinedRuntimeAttributes>
                             </button>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="YMK-y5-SZu">
-                                <rect key="frame" x="62" y="472" width="251" height="30"/>
-                                <state key="normal" title="У меня ещё нет аккаунта. Создать."/>
-                            </button>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
-                            <constraint firstItem="YMK-y5-SZu" firstAttribute="centerX" secondItem="GyT-iR-pDB" secondAttribute="centerX" id="4DE-jV-X4T"/>
-                            <constraint firstItem="Rv7-Ol-GD9" firstAttribute="top" secondItem="U9T-NJ-TGr" secondAttribute="bottom" constant="34" id="QY1-Vo-A0C"/>
-                            <constraint firstAttribute="trailing" secondItem="U9T-NJ-TGr" secondAttribute="trailing" id="TZY-Qz-QeH"/>
-                            <constraint firstItem="Rv7-Ol-GD9" firstAttribute="centerX" secondItem="GyT-iR-pDB" secondAttribute="centerX" id="cME-xa-MvZ"/>
-                            <constraint firstItem="YMK-y5-SZu" firstAttribute="top" secondItem="Rv7-Ol-GD9" secondAttribute="bottom" constant="21" id="hi5-Rz-Uci"/>
-                            <constraint firstItem="U9T-NJ-TGr" firstAttribute="leading" secondItem="GyT-iR-pDB" secondAttribute="leading" id="rkg-sJ-u8D"/>
-                            <constraint firstItem="GWs-cr-JfE" firstAttribute="top" secondItem="YMK-y5-SZu" secondAttribute="bottom" constant="165" id="sur-sK-F9d"/>
+                            <constraint firstItem="YMK-y5-SZu" firstAttribute="top" secondItem="Rv7-Ol-GD9" secondAttribute="bottom" constant="21" id="GvP-Fk-hU8"/>
+                            <constraint firstItem="YMK-y5-SZu" firstAttribute="centerX" secondItem="GyT-iR-pDB" secondAttribute="centerX" id="Mcn-7B-YOV"/>
+                            <constraint firstAttribute="trailing" secondItem="U9T-NJ-TGr" secondAttribute="trailing" id="SMY-go-y0U"/>
+                            <constraint firstItem="Rv7-Ol-GD9" firstAttribute="top" secondItem="U9T-NJ-TGr" secondAttribute="bottom" constant="34" id="aYN-cI-I5i"/>
+                            <constraint firstItem="U9T-NJ-TGr" firstAttribute="leading" secondItem="GyT-iR-pDB" secondAttribute="leading" id="hDQ-oZ-5nt"/>
+                            <constraint firstItem="Rv7-Ol-GD9" firstAttribute="centerX" secondItem="GyT-iR-pDB" secondAttribute="centerX" id="qAI-Tb-4ul"/>
+                            <constraint firstItem="GWs-cr-JfE" firstAttribute="top" secondItem="YMK-y5-SZu" secondAttribute="bottom" constant="184.5" id="si0-4G-SiX"/>
                         </constraints>
                     </view>
                     <navigationItem key="navigationItem" title="Авторизация" id="PX0-eh-TL1"/>
+                    <connections>
+                        <outlet property="bottomConstr" destination="si0-4G-SiX" id="XHb-SS-OeF"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="5Hh-q1-5FZ" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
@@ -141,11 +144,13 @@
                                                     <rect key="frame" x="8" y="28" width="359" height="24"/>
                                                     <nil key="textColor"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="16"/>
-                                                    <textInputTraits key="textInputTraits"/>
+                                                    <textInputTraits key="textInputTraits" keyboardType="emailAddress" returnKeyType="done"/>
+                                                    <connections>
+                                                        <outlet property="delegate" destination="eNG-tW-eux" id="Vyc-ps-0gk"/>
+                                                    </connections>
                                                 </textField>
                                             </subviews>
                                             <constraints>
-                                                <constraint firstAttribute="trailingMargin" secondItem="yLi-Lg-l8p" secondAttribute="trailing" constant="320" id="0KX-jM-iiQ"/>
                                                 <constraint firstItem="JRr-hX-ZAO" firstAttribute="top" secondItem="yLi-Lg-l8p" secondAttribute="bottom" constant="4" id="5Iz-8R-nzb"/>
                                                 <constraint firstItem="yLi-Lg-l8p" firstAttribute="leading" secondItem="I0R-PJ-JHF" secondAttribute="leadingMargin" id="Ac2-Qn-clx"/>
                                                 <constraint firstAttribute="bottom" secondItem="JRr-hX-ZAO" secondAttribute="bottom" constant="4" id="MOo-Xe-tei"/>
@@ -172,7 +177,10 @@
                                                     <rect key="frame" x="8" y="28" width="238" height="24"/>
                                                     <nil key="textColor"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="16"/>
-                                                    <textInputTraits key="textInputTraits" secureTextEntry="YES"/>
+                                                    <textInputTraits key="textInputTraits" returnKeyType="done" secureTextEntry="YES"/>
+                                                    <connections>
+                                                        <outlet property="delegate" destination="eNG-tW-eux" id="VM6-di-zE6"/>
+                                                    </connections>
                                                 </textField>
                                                 <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="cix-EF-8On">
                                                     <rect key="frame" x="254" y="12" width="113" height="30"/>
@@ -201,7 +209,6 @@
                                                 <constraint firstItem="cix-EF-8On" firstAttribute="trailing" secondItem="YSh-EY-Rog" secondAttribute="trailing" id="KE4-hk-EwW"/>
                                                 <constraint firstItem="YSh-EY-Rog" firstAttribute="leading" secondItem="4Az-fZ-2fD" secondAttribute="trailing" constant="8" id="Mcm-8e-EFN"/>
                                                 <constraint firstItem="4Az-fZ-2fD" firstAttribute="leading" secondItem="VfH-eT-l8h" secondAttribute="leading" constant="8" id="SfQ-Vl-B6K"/>
-                                                <constraint firstAttribute="trailingMargin" secondItem="zIM-tz-iZd" secondAttribute="trailing" constant="312" id="TpN-0r-xfI"/>
                                                 <constraint firstAttribute="bottom" secondItem="4Az-fZ-2fD" secondAttribute="bottom" constant="4" id="Zpf-dD-DSF"/>
                                                 <constraint firstItem="cix-EF-8On" firstAttribute="leading" secondItem="YSh-EY-Rog" secondAttribute="leading" id="hI1-WQ-SIn"/>
                                                 <constraint firstItem="zIM-tz-iZd" firstAttribute="leading" secondItem="VfH-eT-l8h" secondAttribute="leadingMargin" id="tcr-Xp-WX2"/>
@@ -221,11 +228,12 @@
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="zmB-xp-h3B" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2340" y="-548.27586206896558"/>
+            <point key="canvasLocation" x="2486" y="-544"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="8mf-rO-P4q">
             <objects>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="3hP-Wm-u3c" userLabel="First Responder" sceneMemberID="firstResponder"/>
                 <navigationController automaticallyAdjustsScrollViewInsets="NO" id="ZjO-eL-zzA" sceneMemberID="viewController">
                     <toolbarItems/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" id="JoK-Ue-xYn">
@@ -237,7 +245,6 @@
                         <segue destination="BYZ-38-t0r" kind="relationship" relationship="rootViewController" id="2q0-me-LpI"/>
                     </connections>
                 </navigationController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="3hP-Wm-u3c" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="136.80000000000001" y="-543.77811094452773"/>
         </scene>
