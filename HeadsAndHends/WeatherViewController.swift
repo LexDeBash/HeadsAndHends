@@ -36,4 +36,10 @@ class TestViewController: UIViewController {
         })
             .addDisposableTo(disposeBag)
     }
+    
+    @IBAction func button(_ sender: UIButton) {
+        print(cityNameLabel.text!)
+        print(degreesLabel.text!)
+    }
+    
 }

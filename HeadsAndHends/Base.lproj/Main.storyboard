@@ -236,6 +236,7 @@
         <!--Погода-->
         <scene sceneID="5au-90-hSk">
             <objects>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="d30-ZS-sPm" userLabel="First Responder" sceneMemberID="firstResponder"/>
                 <viewController id="12p-T4-rN2" customClass="TestViewController" customModule="HeadsAndHends" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="5e5-vx-Jis"/>
@@ -245,8 +246,8 @@
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="0.0ºF" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="F45-eY-mQS">
-                                <rect key="frame" x="139" y="271" width="96" height="48"/>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="0.0ºC" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="F45-eY-mQS">
+                                <rect key="frame" x="136" y="271" width="103" height="48"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="40"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
@@ -266,6 +267,13 @@
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <textInputTraits key="textInputTraits"/>
                             </textField>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="JEf-fz-X3e">
+                                <rect key="frame" x="164" y="357" width="46" height="30"/>
+                                <state key="normal" title="Button"/>
+                                <connections>
+                                    <action selector="button:" destination="12p-T4-rN2" eventType="touchUpInside" id="odr-Zc-R54"/>
+                                </connections>
+                            </button>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
@@ -274,6 +282,8 @@
                             <constraint firstItem="F45-eY-mQS" firstAttribute="top" secondItem="7Te-vi-UqD" secondAttribute="bottom" constant="67" id="Gnm-6m-Ux6"/>
                             <constraint firstItem="F45-eY-mQS" firstAttribute="centerX" secondItem="ahX-OU-H5V" secondAttribute="centerX" id="Mwu-6W-uzh"/>
                             <constraint firstItem="TuG-ge-JzI" firstAttribute="centerX" secondItem="ahX-OU-H5V" secondAttribute="centerX" id="fEv-cY-Of0"/>
+                            <constraint firstItem="JEf-fz-X3e" firstAttribute="top" secondItem="F45-eY-mQS" secondAttribute="bottom" constant="38" id="fso-5t-LzB"/>
+                            <constraint firstItem="JEf-fz-X3e" firstAttribute="centerX" secondItem="ahX-OU-H5V" secondAttribute="centerX" id="qPq-a4-Ycd"/>
                             <constraint firstItem="TuG-ge-JzI" firstAttribute="top" secondItem="5e5-vx-Jis" secondAttribute="bottom" constant="34" id="xeC-vU-4c7"/>
                         </constraints>
                     </view>
@@ -284,7 +294,6 @@
                         <outlet property="degreesLabel" destination="F45-eY-mQS" id="DoM-zs-WGt"/>
                     </connections>
                 </viewController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="d30-ZS-sPm" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="2392.8000000000002" y="-321.58920539730138"/>
         </scene>
