@@ -94,6 +94,9 @@
                                         <integer key="value" value="14"/>
                                     </userDefinedRuntimeAttribute>
                                 </userDefinedRuntimeAttributes>
+                                <connections>
+                                    <segue destination="12p-T4-rN2" kind="show" identifier="Weather" id="tkM-tz-mBf"/>
+                                </connections>
                             </button>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
@@ -228,12 +231,64 @@
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="zmB-xp-h3B" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2486" y="-544"/>
+            <point key="canvasLocation" x="2393" y="-765"/>
+        </scene>
+        <!--Погода-->
+        <scene sceneID="5au-90-hSk">
+            <objects>
+                <viewController id="12p-T4-rN2" customClass="TestViewController" customModule="HeadsAndHends" customModuleProvider="target" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="5e5-vx-Jis"/>
+                        <viewControllerLayoutGuide type="bottom" id="Nci-fa-541"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="ahX-OU-H5V">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="TuG-ge-JzI">
+                                <rect key="frame" x="16" y="72" width="343" height="30"/>
+                                <nil key="textColor"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <textInputTraits key="textInputTraits"/>
+                            </textField>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="0.0ºF" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="F45-eY-mQS">
+                                <rect key="frame" x="139" y="271" width="96" height="48"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="40"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="City Name" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="7Te-vi-UqD">
+                                <rect key="frame" x="147" y="183" width="80" height="21"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstItem="7Te-vi-UqD" firstAttribute="centerX" secondItem="ahX-OU-H5V" secondAttribute="centerX" id="1T2-kk-E2z"/>
+                            <constraint firstItem="TuG-ge-JzI" firstAttribute="leading" secondItem="ahX-OU-H5V" secondAttribute="leadingMargin" id="3Cp-LJ-nfA"/>
+                            <constraint firstItem="7Te-vi-UqD" firstAttribute="top" secondItem="TuG-ge-JzI" secondAttribute="bottom" constant="81" id="6AB-z3-ruE"/>
+                            <constraint firstItem="F45-eY-mQS" firstAttribute="top" secondItem="7Te-vi-UqD" secondAttribute="bottom" constant="67" id="Gnm-6m-Ux6"/>
+                            <constraint firstItem="F45-eY-mQS" firstAttribute="centerX" secondItem="ahX-OU-H5V" secondAttribute="centerX" id="Mwu-6W-uzh"/>
+                            <constraint firstItem="TuG-ge-JzI" firstAttribute="trailing" secondItem="ahX-OU-H5V" secondAttribute="trailingMargin" id="eiP-6a-Rcy"/>
+                            <constraint firstItem="TuG-ge-JzI" firstAttribute="top" secondItem="5e5-vx-Jis" secondAttribute="bottom" constant="8" id="xeC-vU-4c7"/>
+                        </constraints>
+                    </view>
+                    <navigationItem key="navigationItem" title="Погода" id="MFs-Dt-DkL"/>
+                    <connections>
+                        <outlet property="cityNameLabel" destination="7Te-vi-UqD" id="MkT-fI-e3D"/>
+                        <outlet property="cityNameTextField" destination="TuG-ge-JzI" id="PQ6-8z-KGq"/>
+                        <outlet property="degreesLabel" destination="F45-eY-mQS" id="DoM-zs-WGt"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="d30-ZS-sPm" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="2392.8000000000002" y="-321.58920539730138"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="8mf-rO-P4q">
             <objects>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="3hP-Wm-u3c" userLabel="First Responder" sceneMemberID="firstResponder"/>
                 <navigationController automaticallyAdjustsScrollViewInsets="NO" id="ZjO-eL-zzA" sceneMemberID="viewController">
                     <toolbarItems/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" id="JoK-Ue-xYn">
@@ -245,6 +300,7 @@
                         <segue destination="BYZ-38-t0r" kind="relationship" relationship="rootViewController" id="2q0-me-LpI"/>
                     </connections>
                 </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="3hP-Wm-u3c" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="136.80000000000001" y="-543.77811094452773"/>
         </scene>
