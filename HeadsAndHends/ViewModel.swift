@@ -44,14 +44,17 @@ class ViewModel {
                 case .success:
                     if let value = response.result.value {
                         let json = JSON(value)
+                        print(json["city"]["name"])
+                        print(json["list"][0]["main"]["temp"])
+                        self.weather?.cityName = json["city"]["name"].stringValue
+                        self.weather?.degrees = json["list"][0]["main"]["temp"].doubleValue
+                        
                         if let name = self.weather?.cityName {
-                            self.weather?.cityName = json["city"]["name"].stringValue
                             DispatchQueue.main.async() {
                                 self.cityName.onNext(name)
                             }
                         }
                         if let temp = self.weather?.degrees {
-                            self.weather?.degrees = json["list"][0]["main"]["temp"].doubleValue
                             DispatchQueue.main.async() {
                                 self.degrees.onNext("\(temp)°C")
                             }
