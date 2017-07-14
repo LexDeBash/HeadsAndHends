@@ -10,6 +10,7 @@ import Foundation
 import RxSwift
 import RxCocoa
 import SwiftyJSON
+import Alamofire
 
 class ViewModel {
     
@@ -23,27 +24,30 @@ class ViewModel {
     var cityName = PublishSubject<String>()
     var degrees = PublishSubject<String>()
     
-    var weather: Weather? {
-        didSet {
-            if let name = weather?.cityName {
-                DispatchQueue.main.async() {
-                    self.cityName.onNext(name)
-                }
-            }
-            if let temp = weather?.degrees {
-                DispatchQueue.main.async() {
-                    self.degrees.onNext("\(temp)°F")
-                }
-            }
-        }
-    }
+    var weather: Weather?
+//    {
+//        didSet {
+//            if let name = weather?.cityName {
+//                DispatchQueue.main.async() {
+//                    self.cityName.onNext(name)
+//                }
+//            }
+//            if let temp = weather?.degrees {
+//                DispatchQueue.main.async() {
+//                    self.degrees.onNext("\(temp)°F")
+//                }
+//            }
+//        }
+//    }
     
+
     init() {
         let jsonRequest = searchText
-            .map { text in
-                return URLSession.shared.rx.json(url: self.getURLForString(text: text!))
+            .map { city in
+                self.getURLForString(city: city!)
+//                return URLSession.shared.rx.json(url: self.getURLForString(city: city!))
             }
-            .switchLatest()
+//            .switchLatest()
         
         jsonRequest
             .subscribe(onNext: { (json) in
@@ -52,11 +56,47 @@ class ViewModel {
             .addDisposableTo(disposeBag)
     }
     
-    
-    func getURLForString(text: String) -> URL{
-        let url = URL(string: String(format: "%@%@%@",Constants.baseURL,text.replacingOccurrences(of: " ", with: "%20"), Constants.APPID))
-        return url!
+    func getURLForString(city: String) {
+        let prefixURL = "http://api.openweathermap.org/data/2.5/forecast"
+        let postfixURL = ["q": city, "units": "metric", "appid": "cc43de317c7b45042d6dd7d09ee12d74"]
+
+        Alamofire.request(prefixURL, method: .get, parameters: postfixURL).validate().responseJSON { response in
+            switch response.result {
+                case .success:
+                    if let value = response.result.value {
+                        let json = JSON(value)
+                        print(json["city"]["name"])
+                        print(json["list"][0]["main"]["temp"])
+                        
+                        for (_,subJson):(String, JSON) in json["list"] {
+                            
+                            self.weather?.cityName = subJson["city"]["name"].stringValue
+                            self.weather?.degrees = subJson["main"]["temp"].doubleValue
+                            
+                            if let name = self.weather?.cityName {
+                                DispatchQueue.main.async() {
+                                    self.cityName.onNext(name)
+                                }
+                            }
+                            
+                            if let temp = self.weather?.degrees {
+                                DispatchQueue.main.async() {
+                                    self.degrees.onNext("\(temp)°C")
+                                }
+                            }
+                        }
+                    }
+                case .failure(let error):
+                print(error)
+            
+            }
+        }
     }
+    
+//    func getURLForString(city: String) -> URL{
+//        let url = URL(string: String(format: "%@%@%@",Constants.baseURL,city.replacingOccurrences(of: " ", with: "%20"), Constants.APPID))
+//        return url!
+//    }
     
     
 //    init() {

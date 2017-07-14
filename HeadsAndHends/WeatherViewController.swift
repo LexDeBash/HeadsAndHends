@@ -21,6 +21,10 @@ class TestViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        if let topItem = self.navigationController?.navigationBar.topItem {
+            topItem.backBarButtonItem = UIBarButtonItem(title: "", style: .plain, target: nil, action: nil)
+        }
+        
         viewModel.cityName.bind(to: cityNameLabel.rx.text)
             .addDisposableTo(disposeBag)
         

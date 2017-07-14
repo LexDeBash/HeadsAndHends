@@ -15,7 +15,7 @@
 		987882831F169D7D008E8C3F /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 987882811F169D7D008E8C3F /* LaunchScreen.storyboard */; };
 		9888CB1E1F16A84800377C90 /* AuthorizationVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9888CB1D1F16A84800377C90 /* AuthorizationVC.swift */; };
 		9888CB201F17427900377C90 /* LoginPasswordTVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9888CB1F1F17427900377C90 /* LoginPasswordTVC.swift */; };
-		9888CB221F17E26E00377C90 /* TestViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9888CB211F17E26E00377C90 /* TestViewController.swift */; };
+		9888CB221F17E26E00377C90 /* WeatherViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9888CB211F17E26E00377C90 /* WeatherViewController.swift */; };
 		9888CB241F17E36D00377C90 /* Weather.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9888CB231F17E36D00377C90 /* Weather.swift */; };
 		9888CB261F17E43F00377C90 /* ViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9888CB251F17E43F00377C90 /* ViewModel.swift */; };
 /* End PBXBuildFile section */
@@ -30,7 +30,7 @@
 		987882841F169D7D008E8C3F /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		9888CB1D1F16A84800377C90 /* AuthorizationVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AuthorizationVC.swift; sourceTree = "<group>"; };
 		9888CB1F1F17427900377C90 /* LoginPasswordTVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LoginPasswordTVC.swift; sourceTree = "<group>"; };
-		9888CB211F17E26E00377C90 /* TestViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TestViewController.swift; sourceTree = "<group>"; };
+		9888CB211F17E26E00377C90 /* WeatherViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WeatherViewController.swift; sourceTree = "<group>"; };
 		9888CB231F17E36D00377C90 /* Weather.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Weather.swift; sourceTree = "<group>"; };
 		9888CB251F17E43F00377C90 /* ViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ViewModel.swift; sourceTree = "<group>"; };
 		A64687FFEF1B6CF8B2E3886F /* Pods-HeadsAndHends.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-HeadsAndHends.release.xcconfig"; path = "Pods/Target Support Files/Pods-HeadsAndHends/Pods-HeadsAndHends.release.xcconfig"; sourceTree = "<group>"; };
@@ -84,7 +84,7 @@
 				9878827A1F169D7D008E8C3F /* ViewController.swift */,
 				9888CB1D1F16A84800377C90 /* AuthorizationVC.swift */,
 				9888CB1F1F17427900377C90 /* LoginPasswordTVC.swift */,
-				9888CB211F17E26E00377C90 /* TestViewController.swift */,
+				9888CB211F17E26E00377C90 /* WeatherViewController.swift */,
 				9888CB231F17E36D00377C90 /* Weather.swift */,
 				9888CB251F17E43F00377C90 /* ViewModel.swift */,
 				9878827C1F169D7D008E8C3F /* Main.storyboard */,
@@ -226,7 +226,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				9888CB221F17E26E00377C90 /* TestViewController.swift in Sources */,
+				9888CB221F17E26E00377C90 /* WeatherViewController.swift in Sources */,
 				9878827B1F169D7D008E8C3F /* ViewController.swift in Sources */,
 				987882791F169D7D008E8C3F /* AppDelegate.swift in Sources */,
 				9888CB201F17427900377C90 /* LoginPasswordTVC.swift in Sources */,

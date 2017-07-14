@@ -245,12 +245,6 @@
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="TuG-ge-JzI">
-                                <rect key="frame" x="16" y="72" width="343" height="30"/>
-                                <nil key="textColor"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                <textInputTraits key="textInputTraits"/>
-                            </textField>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="0.0ºF" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="F45-eY-mQS">
                                 <rect key="frame" x="139" y="271" width="96" height="48"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="40"/>
@@ -263,15 +257,20 @@
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
+                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Название города" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="TuG-ge-JzI">
+                                <rect key="frame" x="119" y="72" width="137.5" height="30"/>
+                                <nil key="textColor"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <textInputTraits key="textInputTraits"/>
+                            </textField>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
                             <constraint firstItem="7Te-vi-UqD" firstAttribute="centerX" secondItem="ahX-OU-H5V" secondAttribute="centerX" id="1T2-kk-E2z"/>
-                            <constraint firstItem="TuG-ge-JzI" firstAttribute="leading" secondItem="ahX-OU-H5V" secondAttribute="leadingMargin" id="3Cp-LJ-nfA"/>
                             <constraint firstItem="7Te-vi-UqD" firstAttribute="top" secondItem="TuG-ge-JzI" secondAttribute="bottom" constant="81" id="6AB-z3-ruE"/>
                             <constraint firstItem="F45-eY-mQS" firstAttribute="top" secondItem="7Te-vi-UqD" secondAttribute="bottom" constant="67" id="Gnm-6m-Ux6"/>
                             <constraint firstItem="F45-eY-mQS" firstAttribute="centerX" secondItem="ahX-OU-H5V" secondAttribute="centerX" id="Mwu-6W-uzh"/>
-                            <constraint firstItem="TuG-ge-JzI" firstAttribute="trailing" secondItem="ahX-OU-H5V" secondAttribute="trailingMargin" id="eiP-6a-Rcy"/>
+                            <constraint firstItem="TuG-ge-JzI" firstAttribute="centerX" secondItem="ahX-OU-H5V" secondAttribute="centerX" id="fEv-cY-Of0"/>
                             <constraint firstItem="TuG-ge-JzI" firstAttribute="top" secondItem="5e5-vx-Jis" secondAttribute="bottom" constant="8" id="xeC-vU-4c7"/>
                         </constraints>
                     </view>
