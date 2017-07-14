@@ -14,10 +14,10 @@ import Alamofire
 
 class ViewModel {
     
-    private struct Constants {
-        static let baseURL = "http://api.openweathermap.org/data/2.5/weather?q=Moscow"
-        static let APPID = "&appid=ee9ad474d45b7f839b17b65bc4f40af3"
-    }
+//    private struct Constants {
+//        static let baseURL = "http://api.openweathermap.org/data/2.5/weather?q=Moscow"
+//        static let APPID = "&appid=ee9ad474d45b7f839b17b65bc4f40af3"
+//    }
     
     let disposeBag = DisposeBag()
     var searchText = PublishSubject<String?>()
@@ -78,7 +78,6 @@ class ViewModel {
                                     self.cityName.onNext(name)
                                 }
                             }
-                            
                             if let temp = self.weather?.degrees {
                                 DispatchQueue.main.async() {
                                     self.degrees.onNext("\(temp)°C")
