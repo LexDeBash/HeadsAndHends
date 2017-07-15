@@ -79,6 +79,7 @@
                                 <rect key="frame" x="62" y="452.5" width="251" height="30"/>
                                 <state key="normal" title="У меня ещё нет аккаунта. Создать."/>
                                 <connections>
+                                    <action selector="registrationButton:" destination="20S-7s-UDd" eventType="touchUpInside" id="B1b-bL-3z7"/>
                                     <segue destination="411-SL-hsq" kind="show" identifier="CreateNewUser" id="p5W-uJ-NuJ"/>
                                 </connections>
                             </button>
@@ -98,6 +99,7 @@
                                     </userDefinedRuntimeAttribute>
                                 </userDefinedRuntimeAttributes>
                                 <connections>
+                                    <action selector="autorizationButton:" destination="20S-7s-UDd" eventType="touchUpInside" id="270-au-pFt"/>
                                     <segue destination="12p-T4-rN2" kind="show" identifier="Weather" id="tkM-tz-mBf"/>
                                 </connections>
                             </button>
@@ -291,7 +293,7 @@
             </objects>
             <point key="canvasLocation" x="2654" y="-1125"/>
         </scene>
-        <!--Title-->
+        <!--Регистрация-->
         <scene sceneID="grH-Mf-G3l">
             <objects>
                 <viewController id="411-SL-hsq" customClass="RegistrationVC" customModule="HeadsAndHends" customModuleProvider="target" sceneMemberID="viewController">
@@ -365,7 +367,7 @@
                             <constraint firstAttribute="trailingMargin" secondItem="Ft4-dM-0zs" secondAttribute="trailing" constant="61" id="zIE-uN-Ibw"/>
                         </constraints>
                     </view>
-                    <navigationItem key="navigationItem" title="Title" id="dsJ-g3-WpN"/>
+                    <navigationItem key="navigationItem" title="Регистрация" id="dsJ-g3-WpN"/>
                     <connections>
                         <outlet property="bottomConstr" destination="3Xa-OJ-vrA" id="y3H-e6-wZI"/>
                         <outlet property="emailTextField" destination="VsC-ha-Rtx" id="eg8-XH-c28"/>

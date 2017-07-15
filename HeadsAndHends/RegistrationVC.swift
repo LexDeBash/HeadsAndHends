@@ -47,11 +47,19 @@ class RegistrationVC: UIViewController {
     }
     
     // MARK: Работа с клавиатурой
+    
     // Скрываем клавиатуру по тапу на вью
     func didTapView() {
         view.endEditing(true)
     }
     
+    // Скрытие клавиатуры по клавише "Готово" на текстовой клавиатуре
+    func textFieldShouldReturn(_ textField: UITextField) -> Bool {
+        textField.resignFirstResponder()
+        return true
+    }
+    
+    // Поднимаем элементы интерфейса над клавиатурой
     func keyboardWillShow(sender: Notification) {
         let userInfo = sender.userInfo
         let keyboardSize: CGRect = (userInfo![UIKeyboardFrameBeginUserInfoKey] as! NSValue).cgRectValue
@@ -74,9 +82,50 @@ class RegistrationVC: UIViewController {
         }
     }
     
+    // Регитрация нового пользователя
     @IBAction func saveButton(_ sender: UIButton) {
-        guard !(emailTextField.text?.isEmpty)! || !(firsPasswordTextField.text?.isEmpty)! || !(secondPasswordTextField.text?.isEmpty)! else { return }
-        self.dismiss(animated: true, completion: nil)
+        
+        // Проверка на корректность введенных данных
+        guard !(emailTextField.text?.isEmpty)! && !(firsPasswordTextField.text?.isEmpty)! && !(secondPasswordTextField.text?.isEmpty)! else {
+            return alertController("Не заполненны поля", message: "Заполните логин и пароль для регистрации")
+        }
+        guard (emailTextField.text?.isValidEmail())! else {
+            return alertController("Имя пользователя", message: "Не верный формат электронной почты")
+        }
+        guard firsPasswordTextField.text == secondPasswordTextField.text else {
+            return alertController("Не верный пароль", message: "Повторный пароль не совпадает с первоначальным.")
+        }
+        
+        let numberInPassword = Int((firsPasswordTextField.text?.components(separatedBy: CharacterSet.decimalDigits.inverted).joined())!)
+        let upperCase: String = (firsPasswordTextField.text?.components(separatedBy: CharacterSet.uppercaseLetters.inverted).joined())!
+        let lowerCase: String = (firsPasswordTextField.text?.components(separatedBy: CharacterSet.lowercaseLetters.inverted).joined())!
+        
+        guard (firsPasswordTextField.text?.characters.count)! >= 6
+            && numberInPassword != nil
+            && upperCase.characters.count != 0
+            && lowerCase.characters.count != 0
+            else {
+            return alertController("Не верный пароль",
+                                   message: "Пароль должен быть не короче 6 символов должен обязательно содержать минимум 1 строчную букву, 1 заглавную и 1 цифру")
+        }
+        
+        
+        _ = navigationController?.popViewController(animated: true)
+    }
+    
+    func alertController(_ title: String, message: String) {
+        let alert = UIAlertController(title: title, message: message, preferredStyle: .alert)
+        let okAction = UIAlertAction(title: "Ok", style: .destructive, handler: nil)
+        alert.addAction(okAction)
+        present(alert, animated: true, completion: nil)
     }
 
+}
+
+extension String {
+    func isValidEmail() -> Bool {
+        // here, `try!` will always succeed because the pattern is valid
+        let regex = try! NSRegularExpression(pattern: "^[a-zA-Z0-9.!#$%&'*+/=?^_`{|}~-]+@[a-zA-Z0-9](?:[a-zA-Z0-9-]{0,61}[a-zA-Z0-9])?(?:\\.[a-zA-Z0-9](?:[a-zA-Z0-9-]{0,61}[a-zA-Z0-9])?)*$", options: .caseInsensitive)
+        return regex.firstMatch(in: self, options: [], range: NSRange(location: 0, length: characters.count)) != nil
+    }
 }

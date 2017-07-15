@@ -43,11 +43,13 @@ class AuthorizationVC: UIViewController {
     }
     
     // MARK: Работа с клавиатурой
+    
     // Скрываем клавиатуру по тапу на вью
     func didTapView() {
         view.endEditing(true)
     }
     
+    // Поднимаем элементы интерфейса над клавиатурой
     func keyboardWillShow(sender: Notification) {
         let userInfo = sender.userInfo
         let keyboardSize: CGRect = (userInfo![UIKeyboardFrameBeginUserInfoKey] as! NSValue).cgRectValue
@@ -79,6 +81,14 @@ class AuthorizationVC: UIViewController {
     //Удаляем уведомления после закрытия вьюконтроллера
     deinit {
         removeKeyboardNotification()
+    }
+    
+    @IBAction func autorizationButton(_ sender: UIButton) {
+        view.endEditing(true)
+    }
+    
+    @IBAction func registrationButton(_ sender: UIButton) {
+        view.endEditing(true)
     }
 
 }
