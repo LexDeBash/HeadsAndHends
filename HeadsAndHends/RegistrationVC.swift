@@ -1,17 +1,21 @@
 //
-//  AuthorizationVC.swift
+//  RegistrationViewController.swift
 //  HeadsAndHends
 //
-//  Created by Alexey Efimov on 12.07.17.
+//  Created by Alexey Efimov on 15.07.17.
 //  Copyright © 2017 LDB. All rights reserved.
 //
 
 import UIKit
 
-class AuthorizationVC: UIViewController {
+class RegistrationVC: UIViewController {
+    
+    @IBOutlet weak var emailTextField: UITextField!
+    @IBOutlet weak var firsPasswordTextField: UITextField!
+    @IBOutlet weak var secondPasswordTextField: UITextField!
     
     @IBOutlet weak var bottomConstr: NSLayoutConstraint!
-    
+
     override func viewDidLoad() {
         super.viewDidLoad()
         
@@ -70,15 +74,9 @@ class AuthorizationVC: UIViewController {
         }
     }
     
-    // Удаление наблюдателей
-    func removeKeyboardNotification() {
-        NotificationCenter.default.removeObserver(self, name: NSNotification.Name.UIKeyboardWillShow, object: nil)
-        NotificationCenter.default.removeObserver(self, name: NSNotification.Name.UIKeyboardDidHide, object: nil)
-    }
-    
-    //Удаляем уведомления после закрытия вьюконтроллера
-    deinit {
-        removeKeyboardNotification()
+    @IBAction func saveButton(_ sender: UIButton) {
+        guard !(emailTextField.text?.isEmpty)! || !(firsPasswordTextField.text?.isEmpty)! || !(secondPasswordTextField.text?.isEmpty)! else { return }
+        self.dismiss(animated: true, completion: nil)
     }
 
 }
