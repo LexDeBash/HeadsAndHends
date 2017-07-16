@@ -111,17 +111,12 @@ class RegistrationVC: UIViewController {
         }
         
         // Проверка имени пользователя
-        if usersDict.isEmpty {
-            usersDict[emailTextField.text!] = firsPasswordTextField.text
-            dataExample.setUserLogin(usersDict as [String: String])
-        } else {
-            for login in usersDict.keys {
-                if login == emailTextField.text {
-                    alertController("Регистрация", message: "Имя пользователя уже существует")
-                } else {
-                    usersDict[emailTextField.text!] = firsPasswordTextField.text
-                    dataExample.setUserLogin(usersDict as [String: String])
-                }
+        for login in usersDict.keys {
+            if login == emailTextField.text {
+                alertController("Регистрация", message: "Имя пользователя уже существует")
+            } else {
+                usersDict[emailTextField.text!] = firsPasswordTextField.text
+                dataExample.setUserLogin(usersDict as [String: String])
             }
         }
         
@@ -137,7 +132,8 @@ class RegistrationVC: UIViewController {
             return alertController("Не верный пароль",
                                    message: "Пароль должен быть не короче 6 символов должен обязательно содержать минимум 1 строчную букву, 1 заглавную и 1 цифру")
         }
-        
+        usersDict[emailTextField.text!] = firsPasswordTextField.text
+        dataExample.setUserLogin(usersDict as [String: String])
         _ = navigationController?.popViewController(animated: true)
     }
     

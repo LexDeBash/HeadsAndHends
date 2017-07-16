@@ -35,6 +35,7 @@ class AuthorizationVC: UIViewController {
     
     override func viewDidAppear(_ animated: Bool) {
         getValues()
+        getUsers()
     }
     
     // MARK: viewDidLoad
@@ -121,6 +122,7 @@ class AuthorizationVC: UIViewController {
         viewDidAppear(true)
         print(login!)
         print(password!)
+        print("userDict \(usersDict)")
         guard login?.characters.count != 0 && password?.characters.count != 0 else {
             return alertController("Авторизация", message: "Введите логин и пароль")
         }
@@ -129,17 +131,22 @@ class AuthorizationVC: UIViewController {
         guard usersDict.isEmpty == false else {
             return alertController("Авторизация", message: "Не верное имя пользователя или пароль")
         }
+        var loginIsTrue = false
+        var passwordIsTrue = false
         
         for userLogin in usersDict.keys {
-            if userLogin != login {
-                alertController("Авторизация", message: "Не верное имя пользователя или пароль")
+            if userLogin == login {
+                loginIsTrue = true
             }
         }
         
         for userPassword in usersDict.values {
-            if userPassword != password {
-                alertController("Авторизация", message: "Не верное имя пользователя или пароль")
+            if userPassword == password {
+                passwordIsTrue = true
             }
+        }
+        guard loginIsTrue && passwordIsTrue else {
+            return alertController("Авторизация", message: "Не верное имя пользователя или пароль")
         }
         
         performSegue(withIdentifier: "Weather", sender: sender)
@@ -156,5 +163,7 @@ class AuthorizationVC: UIViewController {
         alert.addAction(okAction)
         present(alert, animated: true, completion: nil)
     }
+    
+    
 
 }
