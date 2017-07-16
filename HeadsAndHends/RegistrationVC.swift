@@ -103,7 +103,7 @@ class RegistrationVC: UIViewController {
             return alertController("Регистрация", message: "Заполните логин и пароль для регистрации")
         }
         guard (emailTextField.text?.isValidEmail())! else {
-            return alertController("Регистрация", message: "Не верный формат электронной почты")
+            return alertController("Регистрация", message: "Неверный формат электронной почты")
         }
 
         guard firsPasswordTextField.text == secondPasswordTextField.text else {
@@ -114,7 +114,7 @@ class RegistrationVC: UIViewController {
         for login in usersDict.keys {
             if login == emailTextField.text {
                 alertController("Регистрация", message: "Имя пользователя уже существует")
-            } 
+            }
         }
         
         let numberInPassword = Int((firsPasswordTextField.text?.components(separatedBy: CharacterSet.decimalDigits.inverted).joined())!)
@@ -126,7 +126,7 @@ class RegistrationVC: UIViewController {
             && upperCase.characters.count != 0
             && lowerCase.characters.count != 0
             else {
-            return alertController("Не верный пароль",
+            return alertController("Неверный пароль",
                                    message: "Пароль должен быть не короче 6 символов должен обязательно содержать минимум 1 строчную букву, 1 заглавную и 1 цифру")
         }
         usersDict[emailTextField.text!] = firsPasswordTextField.text
