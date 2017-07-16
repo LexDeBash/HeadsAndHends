@@ -18,35 +18,22 @@ open class DataExample{
     }
     
     // Сетторы для сохранения данных
-    open func setUserName(_ name: String) {
-        if let defaults = UserDefaults(suiteName: self.suiteName){
-            defaults.set(results, forKey: "userName")
-            defaults.synchronize()
-        }
-    }
-    
-    open func setUserPassword(_ password: String) {
-        if let defaults = UserDefaults(suiteName: self.suiteName){
-            defaults.set(results, forKey: "userPassword")
+    open func setUserLogin(_ login: [String: String]) {
+        if let defaults = UserDefaults(suiteName: self.suiteName) {
+            defaults.set(login, forKey: "userLogin")
             defaults.synchronize()
         }
     }
     
     // Геттеры для загрузки данных
-    open func getUserName() -> String {
+    open func getUserLogin() -> [String: String] {
         if let defaults = UserDefaults(suiteName: self.suiteName){
+            let login = defaults.dictionary(forKey: "userLogin") as? [String: String] ?? [String: String]()
             defaults.synchronize()
-            return defaults.object(forKey: "userName") as? String
+            return login
         }
-        return nil
-    }
-    
-    open func getUserPassword() -> String {
-        if let defaults = UserDefaults(suiteName: self.suiteName){
-            defaults.synchronize()
-            return defaults.object(forKey: "userPassword") as? String
-        }
-        return nil
+        let login: [String: String] = [:]
+        return login
     }
 }
 

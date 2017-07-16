@@ -10,21 +10,32 @@ import UIKit
 
 class RegistrationVC: UIViewController {
     
+    let dataExample = DataExample()
+    
     @IBOutlet weak var emailTextField: UITextField!
     @IBOutlet weak var firsPasswordTextField: UITextField!
     @IBOutlet weak var secondPasswordTextField: UITextField!
     
     @IBOutlet weak var bottomConstr: NSLayoutConstraint!
+    
+    var usersDict = [String: String]()
 
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        getUsers()
         hideBackBarBiutton()
         didTapOnView()
         keyBoardWilShowOrHide()
+        print(usersDict)
     }
     
     // MARK: Методы viewDidLoad
+    
+    // Загрузка словаря со списком пользователей
+    func getUsers() {
+        usersDict = dataExample.getUserLogin()
+    }
     
     // Скрываем заголовок для кнопки возврата из навигейшин бара
     func hideBackBarBiutton() {
@@ -92,8 +103,24 @@ class RegistrationVC: UIViewController {
         guard (emailTextField.text?.isValidEmail())! else {
             return alertController("Имя пользователя", message: "Не верный формат электронной почты")
         }
+
         guard firsPasswordTextField.text == secondPasswordTextField.text else {
             return alertController("Не верный пароль", message: "Повторный пароль не совпадает с первоначальным.")
+        }
+        
+        // Проверка имени пользователя
+        if usersDict.isEmpty {
+            usersDict[emailTextField.text!] = firsPasswordTextField.text
+            dataExample.setUserLogin(usersDict as [String: String])
+        } else {
+            for login in usersDict.keys {
+                if login == emailTextField.text {
+                    alertController("Имя пользователя уже существует", message: "")
+                } else {
+                    usersDict[emailTextField.text!] = firsPasswordTextField.text
+                    dataExample.setUserLogin(usersDict as [String: String])
+                }
+            }
         }
         
         let numberInPassword = Int((firsPasswordTextField.text?.components(separatedBy: CharacterSet.decimalDigits.inverted).joined())!)
@@ -109,7 +136,6 @@ class RegistrationVC: UIViewController {
                                    message: "Пароль должен быть не короче 6 символов должен обязательно содержать минимум 1 строчную букву, 1 заглавную и 1 цифру")
         }
         
-        
         _ = navigationController?.popViewController(animated: true)
     }
     
@@ -124,8 +150,8 @@ class RegistrationVC: UIViewController {
 
 extension String {
     func isValidEmail() -> Bool {
-        // here, `try!` will always succeed because the pattern is valid
-        let regex = try! NSRegularExpression(pattern: "^[a-zA-Z0-9.!#$%&'*+/=?^_`{|}~-]+@[a-zA-Z0-9](?:[a-zA-Z0-9-]{0,61}[a-zA-Z0-9])?(?:\\.[a-zA-Z0-9](?:[a-zA-Z0-9-]{0,61}[a-zA-Z0-9])?)*$", options: .caseInsensitive)
+        let regex = try! NSRegularExpression(pattern: "^[a-zA-Z0-9.!#$%&'*+/=?^_`{|}~-]+@[a-zA-Z0-9](?:[a-zA-Z0-9-]{0,61}[a-zA-Z0-9])?(?:\\.[a-zA-Z0-9](?:[a-zA-Z0-9-]{0,61}[a-zA-Z0-9])?)*$",
+                                             options: .caseInsensitive)
         return regex.firstMatch(in: self, options: [], range: NSRange(location: 0, length: characters.count)) != nil
     }
 }
