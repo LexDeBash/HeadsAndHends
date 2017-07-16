@@ -114,10 +114,7 @@ class RegistrationVC: UIViewController {
         for login in usersDict.keys {
             if login == emailTextField.text {
                 alertController("Регистрация", message: "Имя пользователя уже существует")
-            } else {
-                usersDict[emailTextField.text!] = firsPasswordTextField.text
-                dataExample.setUserLogin(usersDict as [String: String])
-            }
+            } 
         }
         
         let numberInPassword = Int((firsPasswordTextField.text?.components(separatedBy: CharacterSet.decimalDigits.inverted).joined())!)
