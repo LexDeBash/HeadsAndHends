@@ -10,17 +10,39 @@ import UIKit
 
 class AuthorizationVC: UIViewController {
     
+    let dataExample = DataExample()
+    
+    var login: String?
+    var password: String?
+    var usersDict = [String: String]()
+    
+    
     @IBOutlet weak var bottomConstr: NSLayoutConstraint!
     
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        login = ""
+        password = ""
+        
+        dataExample.setLogin(login!)
+        dataExample.setPassword(password!)
+        getUsers()
         hideBackBarBiutton()
         didTapOnView()
         keyBoardWilShowOrHide()
     }
     
-    // MARK: Методы viewDidLoad
+    override func viewDidAppear(_ animated: Bool) {
+        getValues()
+    }
+    
+    // MARK: viewDidLoad
+    
+    // Загрузка словаря со списком пользователей
+    func getUsers() {
+        usersDict = dataExample.getUserLogin()
+    }
     
     // Скрываем заголовок для кнопки возврата из навигейшин бара
     func hideBackBarBiutton() {
@@ -42,7 +64,17 @@ class AuthorizationVC: UIViewController {
         NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillHide), name: NSNotification.Name.UIKeyboardWillHide, object: nil)
     }
     
-    // MARK: Работа с клавиатурой
+    func getValues() {
+        if let loginValue = dataExample.getLogin() {
+            login = loginValue
+        }
+        
+        if let passwordValue = dataExample.getPassword() {
+            password = passwordValue
+        }
+    }
+    
+    // MARK: Keyboard
     
     // Скрываем клавиатуру по тапу на вью
     func didTapView() {
@@ -83,12 +115,46 @@ class AuthorizationVC: UIViewController {
         removeKeyboardNotification()
     }
     
-    @IBAction func autorizationButton(_ sender: UIButton) {
+    //MARK: Autorization
+    
+    @IBAction func autorizationPressed(_ sender: UIButton) {
+        viewDidAppear(true)
+        print(login!)
+        print(password!)
+        guard login?.characters.count != 0 && password?.characters.count != 0 else {
+            return alertController("Авторизация", message: "Введите логин и пароль")
+        }
+        
+        // Проверка имени пользователя
+        guard usersDict.isEmpty == false else {
+            return alertController("Авторизация", message: "Не верное имя пользователя или пароль")
+        }
+        
+        for userLogin in usersDict.keys {
+            if userLogin != login {
+                alertController("Авторизация", message: "Не верное имя пользователя или пароль")
+            }
+        }
+        
+        for userPassword in usersDict.values {
+            if userPassword != password {
+                alertController("Авторизация", message: "Не верное имя пользователя или пароль")
+            }
+        }
+        
+        performSegue(withIdentifier: "Weather", sender: sender)
         view.endEditing(true)
     }
     
-    @IBAction func registrationButton(_ sender: UIButton) {
+    @IBAction func registrationPressed(_ sender: UIButton) {
         view.endEditing(true)
+    }
+    
+    func alertController(_ title: String, message: String) {
+        let alert = UIAlertController(title: title, message: message, preferredStyle: .alert)
+        let okAction = UIAlertAction(title: "Ok", style: .destructive, handler: nil)
+        alert.addAction(okAction)
+        present(alert, animated: true, completion: nil)
     }
 
 }

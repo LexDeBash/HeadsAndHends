@@ -30,7 +30,7 @@ class RegistrationVC: UIViewController {
         print(usersDict)
     }
     
-    // MARK: Методы viewDidLoad
+    // MARK: viewDidLoad
     
     // Загрузка словаря со списком пользователей
     func getUsers() {
@@ -57,7 +57,7 @@ class RegistrationVC: UIViewController {
         NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillHide), name: NSNotification.Name.UIKeyboardWillHide, object: nil)
     }
     
-    // MARK: Работа с клавиатурой
+    // MARK: Keyboard
     
     // Скрываем клавиатуру по тапу на вью
     func didTapView() {
@@ -93,19 +93,21 @@ class RegistrationVC: UIViewController {
         }
     }
     
+    //MARK: Registration
+    
     // Регитрация нового пользователя
     @IBAction func saveButton(_ sender: UIButton) {
         
         // Проверка на корректность введенных данных
         guard !(emailTextField.text?.isEmpty)! && !(firsPasswordTextField.text?.isEmpty)! && !(secondPasswordTextField.text?.isEmpty)! else {
-            return alertController("Не заполненны поля", message: "Заполните логин и пароль для регистрации")
+            return alertController("Регистрация", message: "Заполните логин и пароль для регистрации")
         }
         guard (emailTextField.text?.isValidEmail())! else {
-            return alertController("Имя пользователя", message: "Не верный формат электронной почты")
+            return alertController("Регистрация", message: "Не верный формат электронной почты")
         }
 
         guard firsPasswordTextField.text == secondPasswordTextField.text else {
-            return alertController("Не верный пароль", message: "Повторный пароль не совпадает с первоначальным.")
+            return alertController("Регистрация", message: "Повторный пароль не совпадает с первоначальным.")
         }
         
         // Проверка имени пользователя
@@ -115,7 +117,7 @@ class RegistrationVC: UIViewController {
         } else {
             for login in usersDict.keys {
                 if login == emailTextField.text {
-                    alertController("Имя пользователя уже существует", message: "")
+                    alertController("Регистрация", message: "Имя пользователя уже существует")
                 } else {
                     usersDict[emailTextField.text!] = firsPasswordTextField.text
                     dataExample.setUserLogin(usersDict as [String: String])

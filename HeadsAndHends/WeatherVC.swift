@@ -9,7 +9,7 @@
 import UIKit
 import RxSwift
 
-class TestViewController: UIViewController {
+class WeatherVC: UIViewController {
 
     let viewModel = ViewModel()
     let disposeBag = DisposeBag()

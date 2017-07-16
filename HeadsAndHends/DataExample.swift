@@ -25,6 +25,20 @@ open class DataExample{
         }
     }
     
+    open func setLogin(_ firstValue: String) {
+        if let defaults = UserDefaults(suiteName: self.suiteName){
+            defaults.set(firstValue, forKey: "login")
+            defaults.synchronize()
+        }
+    }
+    
+    open func setPassword(_ firstValue: String) {
+        if let defaults = UserDefaults(suiteName: self.suiteName){
+            defaults.set(firstValue, forKey: "password")
+            defaults.synchronize()
+        }
+    }
+    
     // Геттеры для загрузки данных
     open func getUserLogin() -> [String: String] {
         if let defaults = UserDefaults(suiteName: self.suiteName){
@@ -34,6 +48,22 @@ open class DataExample{
         }
         let login: [String: String] = [:]
         return login
+    }
+    
+    open func getLogin() -> String! {
+        if let defaults = UserDefaults(suiteName: self.suiteName){
+            defaults.synchronize()
+            return defaults.object(forKey: "login") as? String
+        }
+        return nil
+    }
+    
+    open func getPassword() -> String! {
+        if let defaults = UserDefaults(suiteName: self.suiteName){
+            defaults.synchronize()
+            return defaults.object(forKey: "password") as? String
+        }
+        return nil
     }
 }
 

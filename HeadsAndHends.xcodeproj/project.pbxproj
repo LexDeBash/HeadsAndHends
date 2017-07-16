@@ -36,7 +36,7 @@
 		9888CB231F17E36D00377C90 /* Weather.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Weather.swift; sourceTree = "<group>"; };
 		9888CB251F17E43F00377C90 /* ViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ViewModel.swift; sourceTree = "<group>"; };
 		9888CB271F19F99400377C90 /* RegistrationVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RegistrationVC.swift; sourceTree = "<group>"; };
-		9888CB291F1A3C1000377C90 /* DataExample.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DataExample.swift; sourceTree = "<group>"; };
+		9888CB291F1A3C1000377C90 /* DataExample.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = DataExample.swift; path = HeadsAndHends/DataExample.swift; sourceTree = "<group>"; };
 		9888CB2B1F1A412400377C90 /* HeadsAndHends.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; name = HeadsAndHends.entitlements; path = HeadsAndHends/HeadsAndHends.entitlements; sourceTree = "<group>"; };
 		A64687FFEF1B6CF8B2E3886F /* Pods-HeadsAndHends.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-HeadsAndHends.release.xcconfig"; path = "Pods/Target Support Files/Pods-HeadsAndHends/Pods-HeadsAndHends.release.xcconfig"; sourceTree = "<group>"; };
 		FCEECC1E2125FF133A045CA1 /* Pods_HeadsAndHends.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_HeadsAndHends.framework; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -93,7 +93,6 @@
 				9888CB231F17E36D00377C90 /* Weather.swift */,
 				9888CB251F17E43F00377C90 /* ViewModel.swift */,
 				9888CB271F19F99400377C90 /* RegistrationVC.swift */,
-				9888CB291F1A3C1000377C90 /* DataExample.swift */,
 				9878827C1F169D7D008E8C3F /* Main.storyboard */,
 				987882811F169D7D008E8C3F /* LaunchScreen.storyboard */,
 			);
@@ -104,6 +103,7 @@
 			isa = PBXGroup;
 			children = (
 				987882781F169D7D008E8C3F /* AppDelegate.swift */,
+				9888CB291F1A3C1000377C90 /* DataExample.swift */,
 				9878827F1F169D7D008E8C3F /* Assets.xcassets */,
 				987882841F169D7D008E8C3F /* Info.plist */,
 				9888CB2B1F1A412400377C90 /* HeadsAndHends.entitlements */,
